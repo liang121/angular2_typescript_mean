@@ -1,0 +1,10 @@
+{
+  "name": "angular2-demo",
+  "description": "",
+  "main": "",
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}

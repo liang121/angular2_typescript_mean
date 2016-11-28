@@ -1,0 +1,62 @@
+<div style="margin-left: 30px" class="message-box">
+	<!-- {{ 2 |  exponentialStrength:10}} -->
+	<div class="panel panel-default">
+		<div class="panel-heading" style="background-color: #f1f1f1;height:50px">
+			
+			<span style="font-size:16px">{{templateId}}</span>
+			<div class="btn-group" style="float:right;margin-left:20px">
+			    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+			    	{{filterCondition}} <span class="caret"></span>
+			  	</button>
+			  	<ul class="dropdown-menu">
+			    	<li><a (click)="setFilterCondition(7,'One Week')">Last Week</a></li>
+			    	<li><a (click)="setFilterCondition(30, 'Last 30 Days')">Last 30 Days</a></li>
+			    	<li><a (click)="setFilterCondition('unread', 'Unread')">UnRead</a></li>
+			    	<li><a (click)="setFilterCondition('','All Messages')">All</a></li>
+			    </ul>
+			</div>
+			<div class="btn-group" style="float:right;" >
+			    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+			    	{{mark}} <span class="caret"></span>
+			  	</button>
+			  	<ul class="dropdown-menu">
+			    	<li><a (click)="operateMessage('UR','Mark As UnRead')">Mark As UnRead</a></li>
+			    	<li><a (click)="operateMessage('R','Mark As Read')">Mark As Read </a></li>
+			    	<li><a (click)="operateMessage('D','Delete')">Delete</a></li>
+			    </ul>
+			</div>
+		</div>
+		<div class="panel-body">
+			<table class="table table-hover" *ngIf='messagesObject.length !==0'>
+				<tr *ngFor=" let item of messagesObject | messageFilter:conditionVal:true; let i = index; trackBy: index" style="font-size: 13px" [ngClass]="{readed:!item.isReaded}">
+					<td style="width:10px">
+						<div class="checkbox">
+							<label><input type="checkbox" (change)="updateSelectedId(item)"></label>
+						</div>
+					</td>
+					<td (click)="openModal('#messageContentModal',item)">
+						<a> {{item.title}}</a>
+					</td>
+					<td style="float:left">
+						{{item.messageHeader.date}} {{item.messageHeader.time}}
+					</td>
+				</tr>
+			</table>
+			<div class="col-lg-12" *ngIf='messagesObject.length==0' style="text-align: center">
+				<span>No Messages</span>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="lightbox-container" >
+		<snap-lightbox
+				box-id = "messageContentModal"
+				box-type = "right"
+				right-class='col-lg-3'>
+			<span class="glyphicon glyphicon-remove" style="float:right;cursor: pointer;" (click)="closeModal('#messageContentModal')"></span>
+			<h4>{{messageBoxType}} Box</h4>
+			<hr>
+			<div class="lightbox-body" ng-include="'app/feature/messageCenter/modal/messageContentModal.html'"></div>
+
+		</snap-lightbox>
+	</div> -->
+</div>

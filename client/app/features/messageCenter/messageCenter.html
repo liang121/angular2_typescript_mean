@@ -1,0 +1,18 @@
+<div class="container message-center">
+	<!-- <ar-header></ar-header>	 -->
+	<div class="col-lg-2" style="margin-top: 30px">
+		<div class="sidebar">
+			<ul>
+				<li><a routerLink="/messageCenter/inbox" 
+					   routerLinkActive="message-center-sidebar-active"
+					>Inbox</a></li>
+				<li><a routerLink="/messageCenter/sentbox" 
+					   routerLinkActive="message-center-sidebar-active"
+					>Sent</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-lg-9" style="margin-left:30px;margin-top:30px">
+		<router-outlet></router-outlet>
+	</div>
+</div>
